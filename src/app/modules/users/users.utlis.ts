@@ -3,7 +3,7 @@ import { User } from './users.model'
 export const findLastUserId = async () => {
   const lastUser = await User.findOne({}, { id: 1, _id: 0 })
     .sort({
-      createdAt: -1,
+      createdAt: -1, // for organizing the createdAt field in decending order
     })
     .lean()
 
@@ -12,5 +12,8 @@ export const findLastUserId = async () => {
 
 export const generateUserId = async () => {
   const currentId = (await findLastUserId()) || (0).toString().padStart(5, '0')
-  return currentId
+
+  // increment id by 1
+  const incrementedId = (parseInt(currentId) + 1).toString().padStart(5, '0')
+  return incrementedId
 }

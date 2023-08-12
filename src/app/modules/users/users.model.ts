@@ -1,7 +1,6 @@
 import { Model, Schema, model } from 'mongoose'
 import { IUser } from './users.interface'
 
-// Create a new Model type that knows about IUserMethods...
 type UserModel = Model<IUser, object>
 
 const userSchema = new Schema<IUser>(
@@ -11,7 +10,7 @@ const userSchema = new Schema<IUser>(
       required: true,
       unique: true,
     },
-    roll: {
+    role: {
       type: String,
       required: true,
     },
