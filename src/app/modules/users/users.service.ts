@@ -1,4 +1,5 @@
 import confiq from '../../../confiq'
+import ApiError from '../../../errors/ApiError'
 import { IUser } from './users.interface'
 import { User } from './users.model'
 import { generateUserId } from './users.utlis'
@@ -16,7 +17,7 @@ const createUser = async (user: IUser): Promise<IUser | null> => {
   const createdUser = await User.create(user)
 
   if (!createUser) {
-    throw new Error('Failed to create user!')
+    throw new ApiError(400, 'Failed to create user!')
   }
   return createdUser
 }
