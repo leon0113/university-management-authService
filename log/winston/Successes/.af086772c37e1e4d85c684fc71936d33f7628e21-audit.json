@@ -34,6 +34,36 @@
             "date": 1691912430943,
             "name": "D:\\University-Management\\university-management-auth-service\\log\\winston\\Successes\\phu-2023-08-13-13-success.log",
             "hash": "e29cb4f828ab965b5893308a8cb418112b3c34702226677419bacea14186927b"
+        },
+        {
+            "date": 1692008539260,
+            "name": "D:\\University-Management\\university-management-auth-service\\log\\winston\\Successes\\phu-2023-08-14-16-success.log",
+            "hash": "77db78ca7ddae882df2d37e081e65ebdab6d2783189829cb770283887a155b61"
+        },
+        {
+            "date": 1692015586674,
+            "name": "D:\\University-Management\\university-management-auth-service\\log\\winston\\Successes\\phu-2023-08-14-18-success.log",
+            "hash": "e243bc5c223a76244497b55e9f1974cf5d770c2186eadabe93432136d64a923b"
+        },
+        {
+            "date": 1692031060978,
+            "name": "D:\\University-Management\\university-management-auth-service\\log\\winston\\Successes\\phu-2023-08-14-22-success.log",
+            "hash": "f806d40555558cf6977d1605a2a6d02067d9e6412ba340f73141943dc6c62bce"
+        },
+        {
+            "date": 1692032412066,
+            "name": "D:\\University-Management\\university-management-auth-service\\log\\winston\\Successes\\phu-2023-08-14-23-success.log",
+            "hash": "5340135a7866bcf90030d795ac5f7ead5732301f4fcdb721c77f68b165f1f227"
+        },
+        {
+            "date": 1692042771042,
+            "name": "D:\\University-Management\\university-management-auth-service\\log\\winston\\Successes\\phu-2023-08-15-01-success.log",
+            "hash": "a7af14b5dc7e6a72befecde813f3dbf8f396d282c5a321ec07628b9d43af9a6d"
+        },
+        {
+            "date": 1692043241329,
+            "name": "D:\\University-Management\\university-management-auth-service\\log\\winston\\Successes\\phu-2023-08-15-02-success.log",
+            "hash": "9da4d23554799574282935ed3c814f4828e13f132a8cc18aa9199f37896f2080"
         }
     ],
     "hashType": "sha256"

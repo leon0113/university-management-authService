@@ -1,8 +1,8 @@
 import confiq from '../../../confiq'
 import ApiError from '../../../errors/ApiError'
-import { IUser } from './users.interface'
-import { User } from './users.model'
-import { generateUserId } from './users.utlis'
+import { IUser } from './user.interface'
+import { User } from './user.model'
+import { generateUserId } from './user.utlis'
 
 const createUser = async (user: IUser): Promise<IUser | null> => {
   // AUTO generated incremental id
@@ -22,6 +22,6 @@ const createUser = async (user: IUser): Promise<IUser | null> => {
   return createdUser
 }
 
-export default {
+export const UserService = {
   createUser,
 }

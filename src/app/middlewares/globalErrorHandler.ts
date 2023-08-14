@@ -1,16 +1,18 @@
-import { NextFunction, Request, Response } from 'express'
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-console */
+import { ErrorRequestHandler } from 'express'
 import confiq from '../../confiq'
 import { IGenericErrorMessage } from '../../interfaces/error'
 import handleValidationError from '../../errors/handleValidationError'
 import ApiError from '../../errors/ApiError'
+import { errorLogger } from '../../shared/logger'
 
 // 4 parameter means Global error handler
-const globalErrorHandler = (
-  err,
-  req: Request,
-  res: Response,
-  next: NextFunction,
-) => {
+const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
+  confiq.env === 'development'
+    ? console.log('🥂 GlobalErrorHandler: ', err)
+    : errorLogger.error('🥂 GlobalErrorHandler: ', err)
+
   let statusCode = 500
   let message = 'Something went wrong'
   let errorMessages: IGenericErrorMessage[] = []
