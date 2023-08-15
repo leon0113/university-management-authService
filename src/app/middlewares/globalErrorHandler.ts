@@ -18,13 +18,15 @@ const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
   let statusCode = 500;
   let message = 'Something went wrong';
   let errorMessages: IGenericErrorMessage[] = [];
-
+  //! to handle mongoose validation errors
   if (err?.name === 'ValidationError') {
     const simplifiedError = handleValidationError(err);
     statusCode = simplifiedError.statusCode;
     message = simplifiedError.message;
     errorMessages = simplifiedError.errorMessages;
-  } else if (err instanceof Error) {
+  }
+  //! to handle normal Errors
+  else if (err instanceof Error) {
     message = err?.message;
     errorMessages = err?.message
       ? [
@@ -34,7 +36,9 @@ const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
           },
         ]
       : [];
-  } else if (err instanceof ApiError) {
+  }
+  //! to handle Api errors
+  else if (err instanceof ApiError) {
     statusCode = err?.statusCode;
     message = err?.message;
     errorMessages = err?.message
@@ -45,7 +49,9 @@ const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
           },
         ]
       : [];
-  } else if (err instanceof ZodError) {
+  }
+  //! to handle Zod validation errors
+  else if (err instanceof ZodError) {
     const simplifiedError = handleZodHandler(err);
     statusCode = simplifiedError.statusCode;
     message = simplifiedError.message;

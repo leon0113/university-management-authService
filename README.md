@@ -27,7 +27,7 @@
 - [Node.js](https://nodejs.org/en/)
 - [MongoDB](https://www.mongodb.com/try/download/community)
 
-## Video structure
+## Approch Structure
 1. Demo
 2. Code walk-through
 3. Bootstrap application
