@@ -24,6 +24,7 @@ const createSemester = catchAsync(
       statusCode: status.OK,
       success: true,
       message: 'Academic Semester Created Successfully',
+      meta: null,
       data: result,
     });
     next();
@@ -33,13 +34,6 @@ const createSemester = catchAsync(
 //pagination
 const getAllSemester = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
-    // const paginationOptions = {
-    //   page: Number(req.query.page),
-    //   limit: Number(req.query.limit),
-    //   sortBy: req.query.sortBy,
-    //   sortOrder: req.query.sortOrder,
-    // };
-
     //paginationFields = ['page', 'limit', 'sortBy', 'sortOrder']
     const paginationOptions = pick(req.query, paginationFields);
 

@@ -1,5 +1,7 @@
+import { SortOrder } from 'mongoose';
 import ApiError from '../../../errors/ApiError';
-import { IGenericResponse } from '../../../interfaces/common';
+import { paginationHelper } from '../../../helpers/paginationHelper';
+import { IGenericPaginationResponse } from '../../../interfaces/common';
 import { IPaginationOptions } from '../../../interfaces/paginationType';
 import { academicSemesterTitleCodeMapper } from './academicSemester.constant';
 import { IAcademicSemester } from './academicSemester.interface';
@@ -21,15 +23,22 @@ const createSemester = async (
 // pagination service
 const getAllSemester = async (
   paginationOptions: IPaginationOptions,
-): Promise<IGenericResponse<IAcademicSemester[]>> => {
-  // to calculate skill
-  const { page = 1, limit = 10 } = paginationOptions;
+): Promise<IGenericPaginationResponse<IAcademicSemester[]>> => {
+  const { page, limit, skip, sortBy, sortOrder } =
+    paginationHelper.calculatePagination(paginationOptions);
 
-  const skip = (page - 1) * limit;
+  const sortConditions: { [key: string]: SortOrder } = {};
+  if (sortBy && sortOrder) {
+    sortConditions[sortBy] = sortOrder;
+  }
 
   // query on model
-  const result = await AcademicSemester.find().sort().skip(skip).limit(limit);
+  const result = await AcademicSemester.find()
+    .sort(sortConditions)
+    .skip(skip)
+    .limit(limit);
 
+  // to count total documents
   const total = await AcademicSemester.countDocuments();
   return {
     meta: {
