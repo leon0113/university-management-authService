@@ -1,0 +1,36 @@
+
+    /////////////////////////////////////////////////////////////////////
+    Date :Thu Aug 17 2023,
+    Hour: 18,
+    Mintue: 18,
+    Label: Error Level!,
+    Level: error,
+    Message: Unhandle Rejection is detected, We are closing your server! Cast to string failed for value "{ searchTerm: '03' }" (type Object) at path "title" for model "AcademicSemester"
+    ---------------------------------------------------------------------
+
+    /////////////////////////////////////////////////////////////////////
+    Date :Thu Aug 17 2023,
+    Hour: 18,
+    Mintue: 19,
+    Label: Error Level!,
+    Level: error,
+    Message: Unhandle Rejection is detected, We are closing your server! Cast to string failed for value "{ searchTerm: '03' }" (type Object) at path "title" for model "AcademicSemester"
+    ---------------------------------------------------------------------
+
+    /////////////////////////////////////////////////////////////////////
+    Date :Thu Aug 17 2023,
+    Hour: 18,
+    Mintue: 21,
+    Label: Error Level!,
+    Level: error,
+    Message: Unhandle Rejection is detected, We are closing your server! Cast to number failed for value "i" (type string) at path "year" for model "AcademicSemester"
+    ---------------------------------------------------------------------
+
+    /////////////////////////////////////////////////////////////////////
+    Date :Thu Aug 17 2023,
+    Hour: 18,
+    Mintue: 22,
+    Label: Error Level!,
+    Level: error,
+    Message: Unhandle Rejection is detected, We are closing your server! Cast to number failed for value "i" (type string) at path "year" for model "AcademicSemester"
+    ---------------------------------------------------------------------
