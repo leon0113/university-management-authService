@@ -25,32 +25,55 @@ const getAllSemester = async (
   filters: IFilterOption,
 ): Promise<IGenericPaginationResponse<IAcademicSemester[]>> => {
   // search
-  const { searchTerm } = filters;
+  const { searchTerm, ...filterData } = filters;
 
-  const andCondition = [
-    {
-      $or: [
-        {
-          title: {
-            $regex: searchTerm,
-            $options: 'i',
-          },
+  const academicSemesterSearchFields = ['title', 'code', 'year'];
+  const andCondition = [];
+
+  if (searchTerm) {
+    andCondition.push({
+      $or: academicSemesterSearchFields.map(field => ({
+        [field]: {
+          $regex: searchTerm,
+          $options: 'i',
         },
-        {
-          code: {
-            $regex: searchTerm,
-            $options: 'i',
-          },
-        },
-        {
-          year: {
-            $regex: searchTerm,
-            $options: 'i',
-          },
-        },
-      ],
-    },
-  ];
+      })),
+    });
+  }
+
+  //! filtering
+  if (Object.keys(filterData).length) {
+    andCondition.push({
+      $and: Object.entries(filterData).map(([field, value]) => ({
+        [field]: value,
+      })),
+    });
+  }
+
+  // const andCondition = [
+  //   {
+  //     $or: [
+  //       {
+  //         title: {
+  //           $regex: searchTerm,
+  //           $options: 'i'
+  //         },
+  //       },
+  //       {
+  //         code: {
+  //           $regex: searchTerm,
+  //           $options: 'i'
+  //         },
+  //       },
+  //       {
+  //         year: {
+  //           $regex: searchTerm,
+  //           $options: 'i'
+  //         },
+  //       }
+  //     ]
+  //   }
+  // ]
   //pagination
   const { page, limit, skip, sortBy, sortOrder } =
     paginationHelper.calculatePagination(paginationOptions);
