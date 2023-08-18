@@ -11,6 +11,10 @@ router.post(
   AcademicSemesterController.createSemester,
 );
 
+// to get a single doc
+router.get('/:id', AcademicSemesterController.getSingleSemester);
+
+// to get all docs and apply searching filtering
 router.get('/', AcademicSemesterController.getAllSemester);
 
 export const AcademicSemesterRoutes = router;
