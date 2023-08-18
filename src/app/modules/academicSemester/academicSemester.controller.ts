@@ -47,6 +47,7 @@ const getAllSemester = catchAsync(
   },
 );
 
+// to get single semester
 const getSingleSemester = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const id = req.params.id;
