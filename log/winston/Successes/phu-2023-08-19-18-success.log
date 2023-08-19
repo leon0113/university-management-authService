@@ -1,0 +1,36 @@
+
+    /////////////////////////////////////////////////////////////////////
+    Date :Sat Aug 19 2023,
+    Hour: 18,
+    Mintue: 42,
+    Label: Info Level,
+    Level: info,
+    Message: ✌ MongoDB connection established successfully.
+    ---------------------------------------------------------------------
+
+    /////////////////////////////////////////////////////////////////////
+    Date :Sat Aug 19 2023,
+    Hour: 18,
+    Mintue: 42,
+    Label: Info Level,
+    Level: info,
+    Message: Application listening on port 5000
+    ---------------------------------------------------------------------
+
+    /////////////////////////////////////////////////////////////////////
+    Date :Sat Aug 19 2023,
+    Hour: 18,
+    Mintue: 59,
+    Label: Info Level,
+    Level: info,
+    Message: ✌ MongoDB connection established successfully.
+    ---------------------------------------------------------------------
+
+    /////////////////////////////////////////////////////////////////////
+    Date :Sat Aug 19 2023,
+    Hour: 18,
+    Mintue: 59,
+    Label: Info Level,
+    Level: info,
+    Message: Application listening on port 5000
+    ---------------------------------------------------------------------

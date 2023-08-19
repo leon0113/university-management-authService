@@ -1,0 +1,45 @@
+
+    /////////////////////////////////////////////////////////////////////
+    Date :Sat Aug 19 2023,
+    Hour: 19,
+    Mintue: 10,
+    Label: Error Level!,
+    Level: error,
+    Message: Unhandle Rejection is detected, We are closing your server! Cast to ObjectId failed for value "64de12d6733ed428003debb7\n" (type string) at path "_id" for model "AcademicSemester"
+    ---------------------------------------------------------------------
+
+    /////////////////////////////////////////////////////////////////////
+    Date :Sat Aug 19 2023,
+    Hour: 19,
+    Mintue: 21,
+    Label: Error Level!,
+    Level: error,
+    Message: Unhandle Rejection is detected, We are closing your server! Cast to ObjectId failed for value "64de12d6733ed428003debb7\n" (type string) at path "_id" for model "AcademicSemester"
+    ---------------------------------------------------------------------
+
+    /////////////////////////////////////////////////////////////////////
+    Date :Sat Aug 19 2023,
+    Hour: 19,
+    Mintue: 22,
+    Label: Error Level!,
+    Level: error,
+    Message: Unhandle Rejection is detected, We are closing your server! Cast to ObjectId failed for value "64de12d6733ed428003debb7\n" (type string) at path "_id" for model "AcademicSemester"
+    ---------------------------------------------------------------------
+
+    /////////////////////////////////////////////////////////////////////
+    Date :Sat Aug 19 2023,
+    Hour: 19,
+    Mintue: 52,
+    Label: Error Level!,
+    Level: error,
+    Message: Unhandle Rejection is detected, We are closing your server! Invalid Semester Code
+    ---------------------------------------------------------------------
+
+    /////////////////////////////////////////////////////////////////////
+    Date :Sat Aug 19 2023,
+    Hour: 19,
+    Mintue: 57,
+    Label: Error Level!,
+    Level: error,
+    Message: Unhandle Rejection is detected, We are closing your server! Invalid Semester Code
+    ---------------------------------------------------------------------

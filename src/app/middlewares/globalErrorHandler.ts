@@ -11,7 +11,7 @@ import handleZodHandler from '../../errors/handleZodError';
 import handleCastError from '../../errors/handleCastError';
 
 // 4 parameter means Global error handler
-const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
+const globalErrorHandler: ErrorRequestHandler = (err, req, res) => {
   confiq.env === 'development'
     ? console.log('🥂 GlobalErrorHandler: ', err)
     : errorLogger.error('🥂 GlobalErrorHandler: ', err);
@@ -72,8 +72,6 @@ const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
     errorMessages,
     stack: confiq.env != 'production' ? err?.stack : undefined,
   });
-
-  next();
 };
 
 export default globalErrorHandler;
