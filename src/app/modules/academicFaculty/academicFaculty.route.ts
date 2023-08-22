@@ -19,4 +19,6 @@ router.patch('/:id', AcademicFacultyController.updateAcademicFacultyToDb);
 
 router.delete('/:id', AcademicFacultyController.deleteAcademicFacultyToDb);
 
+router.get('/', AcademicFacultyController.getAllAcademicFacultyToDb);
+
 export const academicFacultyRoutes = router;

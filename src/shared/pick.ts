@@ -1,8 +1,6 @@
-// ['page', 'limit', 'sortBy', 'sortOrder']
-
 const pick = <T extends Record<string, unknown>, k extends keyof T>(
   obj: T,
-  keys: k[],
+  keys: k[], // ['page', 'limit', 'sortBy', 'sortOrder']
 ): Partial<T> => {
   const finalObj: Partial<T> = {};
   for (const key of keys) {
