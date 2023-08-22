@@ -1,88 +1,74 @@
 import { Request, Response } from 'express';
-import httpStatus from 'http-status';
-import { paginationFields } from '../../../constants/paginationConst';
 import catchAsync from '../../../shared/catchAsync';
-import pick from '../../../shared/pick';
 import sendResponse from '../../../shared/sendResponse';
-import { academicFacultyFilterableFields } from './academicFaculty.constants';
-import { IAcademicFaculty } from './academicFaculty.interfaces';
+import { IAcademicFaculty } from './academicFaculty.interface';
+import httpStatus from 'http-status';
 import { AcademicFacultyService } from './academicFaculty.service';
 
-const createFaculty = catchAsync(async (req: Request, res: Response) => {
+const createFacultyToDb = catchAsync(async (req: Request, res: Response) => {
   const { ...academicFacultyData } = req.body;
   const result = await AcademicFacultyService.createFaculty(
     academicFacultyData,
   );
-  sendResponse<IAcademicFaculty>(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: 'Academic faculty created successfully',
-    data: result,
-  });
-});
-
-const getSingleFaculty = catchAsync(async (req: Request, res: Response) => {
-  const { id } = req.params;
-  const result = await AcademicFacultyService.getSingleFaculty(id);
 
   sendResponse<IAcademicFaculty>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Academic faculty fetched successfully',
+    message: 'Academic Faculty created successfully',
     data: result,
   });
 });
 
-const getAllFaculties = catchAsync(async (req: Request, res: Response) => {
-  const filters = pick(req.query, academicFacultyFilterableFields);
-  const paginationOptions = pick(req.query, paginationFields);
-
-  const result = await AcademicFacultyService.getAllFaculties(
-    filters,
-    paginationOptions,
-  );
-
-  sendResponse<IAcademicFaculty[]>(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: 'Academic faculties fetched successfully',
-    meta: result.meta,
-    data: result.data,
-  });
-});
-
-const updateFaculty = catchAsync(
-  catchAsync(async (req: Request, res: Response) => {
-    const { id } = req.params;
-    const updatedData = req.body;
-
-    const result = await AcademicFacultyService.updateFaculty(id, updatedData);
+// to handle get single academic faculty req
+const getSingleAcademicFacultyToDb = catchAsync(
+  async (req: Request, res: Response) => {
+    const id = req.params.id;
+    const result = await AcademicFacultyService.getSingleAcademicFaculty(id);
 
     sendResponse<IAcademicFaculty>(res, {
       statusCode: httpStatus.OK,
       success: true,
-      message: 'Academic faculty updated successfully',
+      message: 'Single Academic Semester retrived Successfully !',
       data: result,
     });
-  }),
+  },
 );
 
-const deleteFaculty = catchAsync(async (req: Request, res: Response) => {
-  const { id } = req.params;
-  const result = await AcademicFacultyService.deleteByIdFromDB(id);
+const deleteAcademicFacultyToDb = catchAsync(
+  async (req: Request, res: Response) => {
+    const id = req.params.id;
+    const result = await AcademicFacultyService.deleteAcademicFaculty(id);
 
-  sendResponse<IAcademicFaculty>(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: 'Academic faculty deleted successfully',
-    data: result,
-  });
-});
+    sendResponse<IAcademicFaculty>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Academic Semester deleted Successfully !',
+      data: result,
+    });
+  },
+);
+
+const updateAcademicFacultyToDb = catchAsync(
+  async (req: Request, res: Response) => {
+    const id = req.params.id;
+    const updatedData = req.body;
+    const result = await AcademicFacultyService.updateAcademicFaculty(
+      id,
+      updatedData,
+    );
+
+    sendResponse<IAcademicFaculty>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Academic Semester Updated Successfully !',
+      data: result,
+    });
+  },
+);
 
 export const AcademicFacultyController = {
-  createFaculty,
-  getSingleFaculty,
-  getAllFaculties,
-  updateFaculty,
-  deleteFaculty,
+  createFacultyToDb,
+  getSingleAcademicFacultyToDb,
+  deleteAcademicFacultyToDb,
+  updateAcademicFacultyToDb,
 };

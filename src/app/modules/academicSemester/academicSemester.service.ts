@@ -50,30 +50,6 @@ const getAllSemester = async (
     });
   }
 
-  // const andCondition = [
-  //   {
-  //     $or: [
-  //       {
-  //         title: {
-  //           $regex: searchTerm,
-  //           $options: 'i'
-  //         },
-  //       },
-  //       {
-  //         code: {
-  //           $regex: searchTerm,
-  //           $options: 'i'
-  //         },
-  //       },
-  //       {
-  //         year: {
-  //           $regex: searchTerm,
-  //           $options: 'i'
-  //         },
-  //       }
-  //     ]
-  //   }
-  // ]
   //pagination
   const { page, limit, skip, sortBy, sortOrder } =
     paginationHelper.calculatePagination(paginationOptions);
