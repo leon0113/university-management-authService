@@ -39,7 +39,10 @@ const academicSemesterSchema = new Schema<IAcademicSemester>(
     },
   },
   {
-    timestamps: true, // To add createdAt and updatedAt fields to the schema
+    timestamps: true,
+    toJSON: {
+      virtuals: true,
+    }, // To add createdAt and updatedAt fields to the schema
   },
 );
 

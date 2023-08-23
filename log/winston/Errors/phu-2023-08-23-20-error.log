@@ -1,0 +1,9 @@
+
+    /////////////////////////////////////////////////////////////////////
+    Date :Wed Aug 23 2023,
+    Hour: 20,
+    Mintue: 9,
+    Label: Error Level!,
+    Level: error,
+    Message: Unhandle Rejection is detected, We are closing your server! E11000 duplicate key error collection: university-management.academicdepartments index: title_1 dup key: { title: "Department of update" }
+    ---------------------------------------------------------------------

@@ -14,6 +14,9 @@ const AcademicFacultySchema = new Schema<IAcademicFaculty>(
   },
   {
     timestamps: true,
+    toJSON: {
+      virtuals: true,
+    },
   },
 );
 
