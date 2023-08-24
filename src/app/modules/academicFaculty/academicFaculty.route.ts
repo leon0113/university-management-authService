@@ -25,4 +25,4 @@ router.delete('/:id', AcademicFacultyController.deleteAcademicFacultyToDb);
 
 router.get('/', AcademicFacultyController.getAllAcademicFacultyToDb);
 
-export const academicFacultyRoutes = router;
+export const AcademicFacultyRoutes = router;
