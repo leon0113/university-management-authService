@@ -1,0 +1,9 @@
+
+    /////////////////////////////////////////////////////////////////////
+    Date :Thu Aug 24 2023,
+    Hour: 18,
+    Mintue: 39,
+    Label: Error Level!,
+    Level: error,
+    Message: Unhandle Rejection is detected, We are closing your server! (0 , user_utlis_1.generateUserId) is not a function
+    ---------------------------------------------------------------------

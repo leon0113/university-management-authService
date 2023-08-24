@@ -2,11 +2,16 @@ import confiq from '../../../confiq';
 import ApiError from '../../../errors/ApiError';
 import { IUser } from './user.interface';
 import { User } from './user.model';
-import { generateUserId } from './user.utlis';
+import { generateStudentId } from './user.utlis';
 
 const createUser = async (user: IUser): Promise<IUser | null> => {
   // AUTO generated incremental id
-  const id = await generateUserId();
+
+  const academicSemester = {
+    code: '02',
+    year: '2026',
+  };
+  const id = await generateStudentId(academicSemester);
 
   user.id = id;
   //default passsword

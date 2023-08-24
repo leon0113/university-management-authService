@@ -5,7 +5,7 @@ import catchAsync from '../../../shared/catchAsync';
 import sendResponse from '../../../shared/sendResponse';
 
 const createUser = catchAsync(async (req: Request, res: Response) => {
-  const { user } = req.body;
+  const { ...user } = req.body;
   const result = await UserService.createUser(user);
 
   // res.status(200).json({
