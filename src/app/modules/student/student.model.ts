@@ -39,12 +39,12 @@ export const StudentSchema = new Schema<IStudent, StudentModel>(
     },
     email: {
       type: String,
-      unique: true,
+      // unique: true,
       required: true,
     },
     contactNo: {
       type: String,
-      unique: true,
+      // unique: true,
       required: true,
     },
     emergencyContactNo: {
@@ -97,7 +97,7 @@ export const StudentSchema = new Schema<IStudent, StudentModel>(
         contactNo: {
           type: String,
           required: true,
-          unique: true,
+          // unique: true,
         },
         occupation: {
           type: String,
