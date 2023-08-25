@@ -21,7 +21,7 @@ async function boostrap() {
     logger.info(`✌ MongoDB connection established successfully.`);
 
     app.listen(confiq.port, () => {
-      logger.info(`Application listening on port ${confiq.port}`);
+      logger.info(` 🥣 Application cooking on port ${confiq.port}`);
     });
   } catch (err) {
     errorLogger.error('Failed to connect database!:::', err);
