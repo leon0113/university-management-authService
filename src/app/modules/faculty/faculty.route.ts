@@ -9,7 +9,7 @@ router.get('/:id', FacultyController.getSingleFacultyToDb);
 
 router.get('/', FacultyController.getAllFacultiseToDb);
 
-// router.delete('/:id', FacultyController.deleteFacultyToDb);
+router.delete('/:id', FacultyController.deleteFacultyToDb);
 
 router.patch(
   '/:id',
