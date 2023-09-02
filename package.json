@@ -18,8 +18,10 @@
     "src/**/*.ts": "yarn lint-prettier"
   },
   "dependencies": {
+    "@types/bcrypt": "^5.0.0",
     "@typescript-eslint/eslint-plugin": "^6.3.0",
     "@typescript-eslint/parser": "^6.3.0",
+    "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "eslint": "^8.46.0",

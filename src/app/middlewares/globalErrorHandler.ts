@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-console */
-import { ErrorRequestHandler } from 'express';
+import { ErrorRequestHandler, NextFunction } from 'express';
 import confiq from '../../confiq';
 import { IGenericErrorMessage } from '../../interfaces/error';
 import handleValidationError from '../../errors/handleValidationError';
@@ -11,7 +12,13 @@ import handleZodHandler from '../../errors/handleZodError';
 import handleCastError from '../../errors/handleCastError';
 
 // 4 parameter means Global error handler
-const globalErrorHandler: ErrorRequestHandler = (err, req, res) => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const globalErrorHandler: ErrorRequestHandler = (
+  err,
+  req,
+  res,
+  next: NextFunction,
+) => {
   confiq.env === 'development'
     ? console.log('🥂 GlobalErrorHandler: ', err)
     : errorLogger.error('🥂 GlobalErrorHandler: ', err);

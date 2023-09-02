@@ -16,6 +16,7 @@ import { IFaculty } from '../faculty/faculty.interface';
 import { Faculty } from '../faculty/faculty.model';
 import { IAdmin } from '../admin/admin.interface';
 import { Admin } from '../admin/admin.model';
+import bcrypt from 'bcrypt';
 
 // TODO --------------CREATE STUDENT SERVICE----------------------
 const createStudent = async (
@@ -26,6 +27,12 @@ const createStudent = async (
   if (!user.password) {
     user.password = confiq.default_student_password as string;
   }
+  //* password hashing with bcrypt
+  user.password = await bcrypt.hash(
+    user.password,
+    Number(confiq.bcrypt_salt_rounds),
+  );
+
   // set role
   user.role = 'student';
   // set id
@@ -96,7 +103,7 @@ const createFaculty = async (
 ): Promise<IUser | null> => {
   //default passsword
   if (!user.password) {
-    user.password = confiq.default_student_password as string;
+    user.password = confiq.default_faculty_password as string;
   }
   // set role
   user.role = 'faculty';
@@ -154,14 +161,14 @@ const createFaculty = async (
   return newUserAllData;
 };
 
-// TODO --------------CREATE ADMIN SERVICE----------------------
+// TODO --------------CREATE ADMIN SERVICE---------------------
 const createAdmin = async (
   admin: IAdmin,
   user: IUser,
 ): Promise<IUser | null> => {
   //default passsword
   if (!user.password) {
-    user.password = confiq.default_student_password as string;
+    user.password = confiq.default_admin_password as string;
   }
   // set role
   user.role = 'admin';
