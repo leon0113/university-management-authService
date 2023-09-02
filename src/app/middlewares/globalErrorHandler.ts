@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-console */
@@ -12,7 +13,6 @@ import handleZodHandler from '../../errors/handleZodError';
 import handleCastError from '../../errors/handleCastError';
 
 // 4 parameter means Global error handler
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const globalErrorHandler: ErrorRequestHandler = (
   err,
   req,
