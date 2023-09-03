@@ -40,7 +40,7 @@ const userSchema = new Schema<IUser>(
   },
 );
 
-// pre middleware hook
+// pre hook middleware
 userSchema.pre('save', async function (next) {
   // hashing user password
   const user = this;
