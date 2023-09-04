@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-this-alias */
 import { Schema, model } from 'mongoose';
-import { IUser, UserModel } from './user.interface';
+import { IUser, IUserMethods, UserModel } from './user.interface';
 import bcrypt from 'bcrypt';
 import confiq from '../../../confiq';
 
-const userSchema = new Schema<IUser>(
+const userSchema = new Schema<IUser, Record<string, never>, IUserMethods>(
   {
     id: {
       type: String,
@@ -18,6 +18,11 @@ const userSchema = new Schema<IUser>(
     password: {
       type: String,
       required: true,
+      select: 0,
+    },
+    needsPasswordChange: {
+      type: Boolean,
+      default: true,
     },
     student: {
       type: Schema.Types.ObjectId,
@@ -39,6 +44,26 @@ const userSchema = new Schema<IUser>(
     }, // To add createdAt and updatedAt fields to the schema
   },
 );
+
+// custom instance method to check user exists or not
+userSchema.methods.isUserExist = async function (
+  id: string,
+): Promise<Partial<IUser> | null> {
+  const user = await User.findOne(
+    { id },
+    { id: 1, password: 1, needsPasswordChange: 1 },
+  );
+  return user;
+};
+
+// custom instance method to match hashed password with given password
+userSchema.methods.isPasswordMatched = async function (
+  givenPassword: string,
+  savedPassword: string,
+): Promise<boolean> {
+  const isPasswordMatched = await bcrypt.compare(givenPassword, savedPassword);
+  return isPasswordMatched;
+};
 
 // pre hook middleware
 userSchema.pre('save', async function (next) {
