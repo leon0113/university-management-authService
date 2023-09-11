@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-this-alias */
 import { Schema, model } from 'mongoose';
-import { IUser, IUserMethods, UserModel } from './user.interface';
+import { IUser, UserModel } from './user.interface';
 import bcrypt from 'bcrypt';
 import confiq from '../../../confiq';
 
-const userSchema = new Schema<IUser, Record<string, never>, IUserMethods>(
+const userSchema = new Schema<IUser, UserModel>(
   {
     id: {
       type: String,
@@ -45,10 +45,9 @@ const userSchema = new Schema<IUser, Record<string, never>, IUserMethods>(
   },
 );
 
-// custom instance method to check user exists or not
-userSchema.methods.isUserExist = async function (
+userSchema.statics.isUserExist = async function (
   id: string,
-): Promise<Partial<IUser> | null> {
+): Promise<Pick<IUser, 'id' | 'password' | 'needsPasswordChange'> | null> {
   const user = await User.findOne(
     { id },
     { id: 1, password: 1, role: 1, needsPasswordChange: 1 },
@@ -56,8 +55,7 @@ userSchema.methods.isUserExist = async function (
   return user;
 };
 
-// custom instance method to match hashed password with given password
-userSchema.methods.isPasswordMatched = async function (
+userSchema.statics.isPasswordMatched = async function (
   givenPassword: string,
   savedPassword: string,
 ): Promise<boolean> {
@@ -79,3 +77,23 @@ userSchema.pre('save', async function (next) {
 
 // Create a Model.
 export const User = model<IUser, UserModel>('User', userSchema);
+
+// // custom instance method to check user exists or not
+// userSchema.methods.isUserExist = async function (
+//   id: string,
+// ): Promise<Partial<IUser> | null> {
+//   const user = await User.findOne(
+//     { id },
+//     { id: 1, password: 1, role: 1, needsPasswordChange: 1 },
+//   );
+//   return user;
+// };
+
+// // custom instance method to match hashed password with given password
+// userSchema.methods.isPasswordMatched = async function (
+//   givenPassword: string,
+//   savedPassword: string,
+// ): Promise<boolean> {
+//   const isPasswordMatched = await bcrypt.compare(givenPassword, savedPassword);
+//   return isPasswordMatched;
+// };

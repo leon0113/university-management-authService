@@ -1,35 +1,29 @@
-// import httpStatus from 'http-status';
-// import ApiError from '../../../errors/ApiError';
-// import { User } from '../users/user.model';
-// import { ILoginUser } from './auth.interface';
-// import jwt from 'jsonwebtoken';
+import httpStatus from 'http-status';
+import ApiError from '../../../errors/ApiError';
+import { User } from '../users/user.model';
+import { ILoginUser } from './auth.interface';
 
-// const loginUser = async (payload: ILoginUser) => {
-//   // const { id, password } = payload;
-//   //creating instance of user
-//   const user = new User();
-//   // access to our custom instance method
-//   // const isUserExist = await user.isUserExist(id);
-//   // if (!isUserExist) {
-//   //   throw new ApiError(httpStatus.NOT_FOUND, 'User does not exist');
-//   // }
+const loginUser = async (payload: ILoginUser) => {
+  const { id, password } = payload;
 
-//   // if (
-//   //   isUserExist.password &&
-//   //   !user.isPasswordMatched(password, isUserExist?.password)
-//   // ) {
-//   //   throw new ApiError(httpStatus.UNAUTHORIZED, 'Invalid Password');
-//   // }
+  const isUserExists = await User.isUserExist(id);
 
-//   // // create access token & refresh token
-//   // const accessToken = jwt.sign{
-//   //   id: isUserExist?.id,
-//   //   role: isUserExist?.role
-//   // }
+  if (!isUserExists) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'User does not exist');
+  }
 
-//   return {};
-// };
+  if (
+    isUserExists.password &&
+    !(await User.isPasswordMatched(password, isUserExists?.password))
+  ) {
+    throw new ApiError(httpStatus.UNAUTHORIZED, 'Invalid Password');
+  }
 
-// export const AuthService = {
-//   loginUser,
-// };
+  // create access token & refresh token
+
+  return {};
+};
+
+export const AuthService = {
+  loginUser,
+};
