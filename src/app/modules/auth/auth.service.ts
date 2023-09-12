@@ -5,7 +5,7 @@ import { ILoginUser } from './auth.interface';
 
 const loginUser = async (payload: ILoginUser) => {
   const { id, password } = payload;
-
+  //using static method
   const isUserExists = await User.isUserExist(id);
 
   if (!isUserExists) {
