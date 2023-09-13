@@ -47,7 +47,10 @@ const userSchema = new Schema<IUser, UserModel>(
 
 userSchema.statics.isUserExist = async function (
   id: string,
-): Promise<Pick<IUser, 'id' | 'password' | 'needsPasswordChange'> | null> {
+): Promise<Pick<
+  IUser,
+  'id' | 'password' | 'needsPasswordChange' | 'role'
+> | null> {
   const user = await User.findOne(
     { id },
     { id: 1, password: 1, role: 1, needsPasswordChange: 1 },
@@ -77,23 +80,3 @@ userSchema.pre('save', async function (next) {
 
 // Create a Model.
 export const User = model<IUser, UserModel>('User', userSchema);
-
-// // custom instance method to check user exists or not
-// userSchema.methods.isUserExist = async function (
-//   id: string,
-// ): Promise<Partial<IUser> | null> {
-//   const user = await User.findOne(
-//     { id },
-//     { id: 1, password: 1, role: 1, needsPasswordChange: 1 },
-//   );
-//   return user;
-// };
-
-// // custom instance method to match hashed password with given password
-// userSchema.methods.isPasswordMatched = async function (
-//   givenPassword: string,
-//   savedPassword: string,
-// ): Promise<boolean> {
-//   const isPasswordMatched = await bcrypt.compare(givenPassword, savedPassword);
-//   return isPasswordMatched;
-// };
