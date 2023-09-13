@@ -3,7 +3,7 @@ import express, { Application, NextFunction, Request, Response } from 'express';
 import cors from 'cors';
 import globalErrorHandler from './app/middlewares/globalErrorHandler';
 import routes from './routes';
-// import { generateFacultyId } from './app/modules/users/user.utlis';
+import cookieParser from 'cookie-parser';
 
 const app: Application = express();
 
@@ -11,6 +11,7 @@ app.use(cors());
 
 //parser
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
 //Applications route
