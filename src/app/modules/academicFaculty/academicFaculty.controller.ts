@@ -70,6 +70,8 @@ const updateAcademicFacultyToDb = catchAsync(
 
 const getAllAcademicFacultyToDb = catchAsync(
   async (req: Request, res: Response) => {
+    console.log(req.headers.authorization);
+    console.log(req.user);
     // searching & filtering
     const filters = pick(req.query, ['searchTerm', 'title']);
     //paginationFields = ['page', 'limit', 'sortBy', 'sortOrder']
