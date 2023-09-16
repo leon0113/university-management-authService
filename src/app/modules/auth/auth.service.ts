@@ -28,18 +28,15 @@ const loginUser = async (payload: ILoginUser): Promise<ILoginUserResponse> => {
 
   // create access token
   const { id: userId, role, needsPasswordChange } = isUserExists;
+
+  //* create access token
   const accessToken = jwtHelpers.createToken(
     { userId, role },
     confiq.jwt.secret as Secret,
     confiq.jwt.expires_in as string,
   );
+
   //* create refresh token
-  // const refreshToken = jwt.sign({
-  //   id: isUserExists?.id,
-  //   role: isUserExists.role
-  // }, confiq.jwt.refresh_secret as Secret, {
-  //  expiresIn: confiq.jwt.refresh_expires_in
-  // });
   const refreshToken = jwtHelpers.createToken(
     { userId, role },
     confiq.jwt.refresh_secret as Secret,
