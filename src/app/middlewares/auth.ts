@@ -16,8 +16,8 @@ const auth =
       }
 
       // verify token
-      let verifiedUserToken = null;
-      verifiedUserToken = jwtHelpers.verifyToken(
+
+      const verifiedUserToken = jwtHelpers.verifyToken(
         token,
         confiq.jwt.secret as Secret,
       );
