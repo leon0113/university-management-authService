@@ -35,7 +35,6 @@ const auth =
       next();
     } catch (error) {
       next(error);
-      ///////rtk03ejotfq3jjfo3wqjitr
     }
   };
 
