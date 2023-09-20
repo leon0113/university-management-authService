@@ -26,9 +26,9 @@ const loginUser = async (payload: ILoginUser): Promise<ILoginUserResponse> => {
     throw new ApiError(httpStatus.UNAUTHORIZED, 'Invalid Password');
   }
 
-  // create access token
+  //TODO--------- Json Web Token
   const { id: userId, role, needsPasswordChange } = isUserExists;
-
+  console.log(isUserExists);
   //* create access token
   const accessToken = jwtHelpers.createToken(
     { userId, role },

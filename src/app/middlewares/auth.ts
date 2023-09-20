@@ -21,7 +21,7 @@ const auth =
         token,
         confiq.jwt.secret as Secret,
       );
-
+      console.log(verifiedUserToken);
       //if token got verfied
       req.user = verifiedUserToken; //  role, userId
 
