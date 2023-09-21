@@ -10,7 +10,6 @@ import {
 import { JwtPayload, Secret } from 'jsonwebtoken';
 import confiq from '../../../confiq';
 import { jwtHelpers } from '../../../helpers/jwtHelpers';
-import bcrypt from 'bcrypt';
 
 const loginUser = async (payload: ILoginUser): Promise<ILoginUserResponse> => {
   const { id, password } = payload;
@@ -88,9 +87,14 @@ const changePassword = async (
   user: JwtPayload | null,
   payload: IChangePassword,
 ): Promise<void> => {
-  const { oldPassword, newPassword } = payload;
-  //checking if user exists or not
-  const isUserExists = await User.isUserExist(user?.userId);
+  const { oldPassword } = payload;
+  // //checking if user exists or not
+  // const isUserExists = await User.isUserExist(user?.userId);
+
+  //alternative way
+  const isUserExists = await User.findOne({ id: user?.userId }).select(
+    '+password',
+  );
 
   if (!isUserExists) {
     throw new ApiError(httpStatus.NOT_FOUND, 'User does not exist');
@@ -104,22 +108,28 @@ const changePassword = async (
   }
 
   //hash password before saving
-  const newHashedPassword = await bcrypt.hash(
-    newPassword,
-    Number(confiq.bcrypt_salt_rounds),
-  );
+  // const newHashedPassword = await bcrypt.hash(
+  //   newPassword,
+  //   Number(confiq.bcrypt_salt_rounds),
+  // );
 
-  //update the user password
-  const query = { id: user?.userId };
+  // //update the user password
+  // const query = { id: user?.userId };
 
-  const updatedData = {
-    password: newHashedPassword,
-    needsPasswordChange: false,
-    passwordChangeAt: new Date(),
-  };
+  // const updatedData = {
+  //   password: newHashedPassword,
+  //   needsPasswordChange: false,
+  //   passwordChangeAt: new Date(),
+  // };
 
-  // update the user password
-  await User.findOneAndUpdate(query, updatedData);
+  // // update the user password
+  // await User.findOneAndUpdate(query, updatedData);
+
+  // data changes
+  isUserExists.needsPasswordChange = false;
+
+  // update password using password
+  isUserExists.save();
 };
 
 export const AuthService = {

@@ -52,7 +52,6 @@ const refreshTokenToDb = catchAsync(async (req: Request, res: Response) => {
 
 const changePasswordToDb = catchAsync(async (req: Request, res: Response) => {
   const user = req.user;
-  console.log(user);
   const { ...passwordData } = req.body;
 
   const result = await AuthService.changePassword(user, passwordData);

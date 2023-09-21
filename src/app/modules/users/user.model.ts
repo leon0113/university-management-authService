@@ -78,6 +78,11 @@ userSchema.pre('save', async function (next) {
     user.password,
     Number(confiq.bcrypt_salt_rounds),
   );
+
+  if (!user.needsPasswordChange) {
+    user.passwordChangeAt = new Date();
+  }
+
   next();
 });
 
